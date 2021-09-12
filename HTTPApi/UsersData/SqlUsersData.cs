@@ -40,6 +40,7 @@ namespace HTTPApi.UsersData
         {
             List<UsersModel> newUser = _appDbContext.tblUser.ToList();
             List<UsersModel> newUserData = new List<UsersModel>();
+
             foreach (var users in newUser)
             {
                 List<PaymentListModel> newPModel = new List<PaymentListModel>();
