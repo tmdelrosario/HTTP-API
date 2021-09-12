@@ -17,11 +17,12 @@ E.G.
 HOW TO RUN
 - open project solution
 - run program with Visual Studio
+- if you don't see the database, run 'UPDATE-DATABASE' in the package manage console to create local database
 - You can call the API thru .../api/users/{number id}
 
 EXAMPLE ID WITH DATA
-- /api/values/1
-- /api/values/2
+- /api/users/1
+- /api/users/2
 
 FLOW
 - call the API function
@@ -36,7 +37,7 @@ ADDED FUNCTION
 DATA USED:
 - Local DB
 - Tables with Entity Framework core calling on API
-- You can manipulate the data thru local db server in visual studio (insert tblUser first before inserting to tblPayment table)
+- You can manipulate the data thru local db server in visual studio (already iserted mock data but you can insert tblUser first before inserting to tblPayment table)
 
 TECHNOLOGIES USED:
 - Visual Studio 2019
