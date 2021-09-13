@@ -18,11 +18,11 @@ HOW TO RUN
 - open project solution
 - run program with Visual Studio
 - if you don't see the database, run 'UPDATE-DATABASE' in the package manage console to create local database
-- You can call the API thru .../api/users/{number id}
+- You can call the API thru https://localhost:{port number}/api/users/{number id}
 
 EXAMPLE ID WITH DATA
-- /api/users/1
-- /api/users/2
+- https://localhost:{port number}/api/users/1
+- https://localhost:{port number}/api/users/2
 
 FLOW
 - call the API function
@@ -32,7 +32,7 @@ FLOW
 - return object to JSON format
 
 ADDED FUNCTION
-- returns all users with specific payment list when no ID is returned. .../api/users
+- returns all users with specific payment list when no ID is returned. https://localhost:{port number}/api/users
 
 DATA USED:
 - Local DB
