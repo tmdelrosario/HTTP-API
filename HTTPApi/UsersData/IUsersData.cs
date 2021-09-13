@@ -6,8 +6,7 @@ namespace HTTPApi.UsersData
 {
     public interface IUsersData
     {
-        List<UsersModel> Users();
-
-        List<UsersModel> GetUsers(int id);
+        List<Users> Users();
+        List<Users> GetUsers(int id);
     }
 }

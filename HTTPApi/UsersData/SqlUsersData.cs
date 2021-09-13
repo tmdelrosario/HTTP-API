@@ -13,25 +13,29 @@ namespace HTTPApi.UsersData
         {
             _appDbContext = appContext;
         }
-        public List<UsersModel> GetUsers(int id)
+        public List<Users> GetUsers(int id)
         {
-            List<PaymentListModel> newPModel = new List<PaymentListModel>();
-            List<UsersModel> newUsersData = null;
-            foreach (var items in _appDbContext.tblPayment)
-            {
-                if (id == items.userid)
-                {
-                    newPModel.Add(items);
-                }
-            }
+            List<PaymentList> newPModel = new List<PaymentList>();
+            List<Users> newUsersData = null;
 
-            
             if (_appDbContext.tblUser.Find(id) != null)
             {
-                newUsersData = new List<UsersModel>()
+                foreach (var items in _appDbContext.tblPayment)
                 {
-                    new UsersModel(){
-                        id = _appDbContext.tblUser.SingleOrDefault(x =>x.id == id).id,
+                    if (id == items.userid)
+                    {
+                        newPModel.Add(new PaymentList
+                        {
+                            date = items.date,
+                            amount = items.amount,
+                            status = items.status
+                        });
+                    }
+                }
+            
+                newUsersData = new List<Users>()
+                {
+                    new Users(){
                         accountBalance = _appDbContext.tblUser.SingleOrDefault(x =>x.id == id).accountBalance,
                         paymentList = newPModel.OrderByDescending(o => o.date).ToList()
                     }
@@ -41,26 +45,30 @@ namespace HTTPApi.UsersData
             return newUsersData;
         }
 
-        public List<UsersModel> Users()
+        public List<Users> Users()
         {
             List<UsersModel> newUser = _appDbContext.tblUser.ToList();
-            List<UsersModel> newUserData = new List<UsersModel>();
+            List<Users> newUserData = new List<Users>();
 
             foreach (var users in newUser)
             {
-                List<PaymentListModel> newPModel = new List<PaymentListModel>();
+                List<PaymentList> newPModel = new List<PaymentList>();
                 foreach (var items in _appDbContext.tblPayment)
                 {
                     if (users.id == items.userid)
                     {
-                        newPModel.Add(items);
+                        newPModel.Add(new PaymentList
+                        {
+                            date = items.date,
+                            amount = items.amount,
+                            status = items.status
+                        });
                     }
                 }
 
-                List<UsersModel> tempUsers = new List<UsersModel>()
+                List<Users> tempUsers = new List<Users>()
                 {
-                    new UsersModel(){
-                        id = _appDbContext.tblUser.SingleOrDefault(x =>x.id == users.id).id,
+                    new Users(){
                         accountBalance = _appDbContext.tblUser.SingleOrDefault(x =>x.id == users.id).accountBalance,
                         paymentList = newPModel.OrderByDescending(o => o.date).ToList()
                     }
