@@ -46,6 +46,48 @@ namespace HTTPApi.Migrations
                     b.HasIndex("UsersModelid");
 
                     b.ToTable("tblPayment");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            amount = "1500.00",
+                            date = "9/1/2021",
+                            status = "OK",
+                            userid = 1
+                        },
+                        new
+                        {
+                            id = 2,
+                            amount = "2500.00",
+                            date = "9/2/2021",
+                            status = "OK",
+                            userid = 1
+                        },
+                        new
+                        {
+                            id = 3,
+                            amount = "3500.00",
+                            date = "9/3/2021",
+                            status = "OK",
+                            userid = 1
+                        },
+                        new
+                        {
+                            id = 4,
+                            amount = "5460.00",
+                            date = "8/24/2021",
+                            status = "CLOSED",
+                            userid = 2
+                        },
+                        new
+                        {
+                            id = 5,
+                            amount = "600.00",
+                            date = "7/1/2021",
+                            status = "OK",
+                            userid = 2
+                        });
                 });
 
             modelBuilder.Entity("HTTPApi.Model.UsersModel", b =>
@@ -61,6 +103,18 @@ namespace HTTPApi.Migrations
                     b.HasKey("id");
 
                     b.ToTable("tblUser");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            accountBalance = "30000.00"
+                        },
+                        new
+                        {
+                            id = 2,
+                            accountBalance = "50000.00"
+                        });
                 });
 
             modelBuilder.Entity("HTTPApi.Model.PaymentListModel", b =>

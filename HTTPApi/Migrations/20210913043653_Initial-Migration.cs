@@ -42,6 +42,27 @@ namespace HTTPApi.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "tblPayment",
+                columns: new[] { "id", "UsersModelid", "amount", "date", "status", "userid" },
+                values: new object[,]
+                {
+                    { 1, null, "1500.00", "9/1/2021", "OK", 1 },
+                    { 2, null, "2500.00", "9/2/2021", "OK", 1 },
+                    { 3, null, "3500.00", "9/3/2021", "OK", 1 },
+                    { 4, null, "5460.00", "8/24/2021", "CLOSED", 2 },
+                    { 5, null, "600.00", "7/1/2021", "OK", 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "tblUser",
+                columns: new[] { "id", "accountBalance" },
+                values: new object[,]
+                {
+                    { 1, "30000.00" },
+                    { 2, "50000.00" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_tblPayment_UsersModelid",
                 table: "tblPayment",
