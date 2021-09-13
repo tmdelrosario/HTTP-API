@@ -16,6 +16,7 @@ namespace HTTPApi.UsersData
         public List<UsersModel> GetUsers(int id)
         {
             List<PaymentListModel> newPModel = new List<PaymentListModel>();
+            List<UsersModel> newUsersData = null;
             foreach (var items in _appDbContext.tblPayment)
             {
                 if (id == items.userid)
@@ -24,14 +25,18 @@ namespace HTTPApi.UsersData
                 }
             }
 
-            List<UsersModel> newUsersData = new List<UsersModel>()
+            
+            if (_appDbContext.tblUser.Find(id) != null)
             {
-                new UsersModel(){
-                    id = _appDbContext.tblUser.SingleOrDefault(x =>x.id == id).id,
-                    accountBalance = _appDbContext.tblUser.SingleOrDefault(x =>x.id == id).accountBalance,
-                    paymentList = newPModel.OrderByDescending(o => o.date).ToList()
-                }
-            };
+                newUsersData = new List<UsersModel>()
+                {
+                    new UsersModel(){
+                        id = _appDbContext.tblUser.SingleOrDefault(x =>x.id == id).id,
+                        accountBalance = _appDbContext.tblUser.SingleOrDefault(x =>x.id == id).accountBalance,
+                        paymentList = newPModel.OrderByDescending(o => o.date).ToList()
+                    }
+                };
+            }
 
             return newUsersData;
         }

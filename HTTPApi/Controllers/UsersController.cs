@@ -35,7 +35,6 @@ namespace HTTPApi.Controllers
             }
 
             return NotFound($"User with Id: {id} was not found");
-            
         }
     }
 }
