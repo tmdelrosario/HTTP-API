@@ -16,11 +16,11 @@ E.G.
   
 HOW TO RUN
 - open project solution
-- run program with Visual Studio
 - if you don't see the database, run 'UPDATE-DATABASE' in the package manage console to create local database
+- run program with Visual Studio (IIS Express)
 - You can call the API thru https://localhost:{port number}/api/users/{number id}
 
-EXAMPLE ID WITH DATA
+EXAMPLE ID WITH MOCK DATA
 - https://localhost:{port number}/api/users/1
 - https://localhost:{port number}/api/users/2
 
